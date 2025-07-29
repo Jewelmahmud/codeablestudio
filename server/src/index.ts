@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { contactRouter } from './routes/contact';
 import { servicesRouter } from './routes/services';
 import { projectsRouter } from './routes/projects';
+import paymentsRouter from './routes/payments';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/contact', contactRouter);
 app.use('/api/services', servicesRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/payments', paymentsRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -38,12 +40,13 @@ app.get('/', (req, res) => {
   res.json({ 
     message: 'Welcome to CodeableStudio API',
     version: '1.0.0',
-    endpoints: {
-      health: '/api/health',
-      contact: '/api/contact',
-      services: '/api/services',
-      projects: '/api/projects'
-    }
+          endpoints: {
+        health: '/api/health',
+        contact: '/api/contact',
+        services: '/api/services',
+        projects: '/api/projects',
+        payments: '/api/payments'
+      }
   });
 });
 
