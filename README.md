@@ -193,7 +193,7 @@ This project is licensed under the ISC License.
 
 ## 📞 Contact
 
-CodableStudio - hello@codablestudio.com
+CodableStudio - info@codablestudio.com
 
 ---
 

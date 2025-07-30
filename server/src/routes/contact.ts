@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
   res.json({
     contact: {
-      email: 'hello@codablestudio.com',
+      email: 'info@codablestudio.com',
       phone: '+1 (555) 123-4567',
       address: '123 Innovation Drive, Tech City, TC 12345',
       social: {

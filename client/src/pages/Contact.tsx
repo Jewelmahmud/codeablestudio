@@ -75,8 +75,8 @@ const Contact = () => {
     {
       icon: <EnvelopeIcon className="h-6 w-6" />,
       title: 'Email',
-      content: 'hello@codablestudio.com',
-      link: 'mailto:hello@codablestudio.com'
+      content: 'info@codablestudio.com',
+      link: 'mailto:info@codablestudio.com'
     },
     {
       icon: <PhoneIcon className="h-6 w-6" />,
