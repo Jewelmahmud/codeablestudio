@@ -483,13 +483,21 @@ const Careers = () => {
                       </div>
                     </div>
                   </div>
-                  <Link
-                    to={`/careers/${job.id}`}
-                    className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-6 rounded-lg transition-colors mt-4 lg:mt-0"
-                  >
-                    Apply Now
-                    <ArrowRightIcon className="ml-2 h-4 w-4" />
-                  </Link>
+                  <div className="flex items-center space-x-4 mt-4 lg:mt-0">
+                    <Link
+                      to={`/careers/${job.id}`}
+                      className="inline-flex items-center bg-white text-primary-600 border border-primary-600 hover:bg-primary-50 font-semibold py-2 px-6 rounded-lg transition-colors"
+                    >
+                      View Details
+                    </Link>
+                    <Link
+                      to={`/careers/${job.id}`}
+                      className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-6 rounded-lg transition-colors"
+                    >
+                      Apply Now
+                      <ArrowRightIcon className="ml-2 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
                 <p className="text-gray-600 mb-4">{job.description}</p>
                 

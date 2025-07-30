@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   Bars3Icon, 
   XMarkIcon, 
@@ -14,10 +15,14 @@ import {
   ChartBarIcon,
   UserGroupIcon,
   ClockIcon,
-  SparklesIcon
+  SparklesIcon,
+  ShoppingCartIcon
 } from '@heroicons/react/24/outline';
+import LanguageSwitcher from './LanguageSwitcher';
+import './MegaMenu.css';
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTechnologiesOpen, setIsTechnologiesOpen] = useState(false);
@@ -34,13 +39,13 @@ const Navbar = () => {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/', type: 'link' },
-    { name: 'Services', href: '/services', type: 'dropdown', dropdownType: 'services' },
-    { name: 'Technologies', href: '/technologies', type: 'dropdown', dropdownType: 'technologies' },
-    { name: 'Projects', href: '/projects', type: 'link' },
-    { name: 'Case Studies', href: '/case-studies', type: 'link' },
-    { name: 'About', href: '/about', type: 'link' },
-    { name: 'Contact', href: '/contact', type: 'link' },
+    { name: t('navigation.home'), href: '/', type: 'link' },
+    { name: t('navigation.services'), href: '/services', type: 'dropdown', dropdownType: 'services' },
+    { name: t('navigation.technologies'), href: '/technologies', type: 'dropdown', dropdownType: 'technologies' },
+    { name: t('navigation.projects'), href: '/projects', type: 'link' },
+    { name: t('navigation.caseStudies'), href: '/case-studies', type: 'link' },
+    { name: t('navigation.about'), href: '/about', type: 'link' },
+    { name: t('navigation.contact'), href: '/contact', type: 'link' },
   ];
 
   const services = {
@@ -54,20 +59,20 @@ const Navbar = () => {
       {
         name: 'E-commerce Platforms',
         description: 'Online store solutions',
-        icon: <DevicePhoneMobileIcon className="w-6 h-6" />,
-        href: '/services#ecommerce'
+        icon: <ShoppingCartIcon className="w-6 h-6" />,
+        href: '/services/ecommerce-development'
       },
       {
         name: 'Progressive Web Apps',
         description: 'Modern PWA development',
         icon: <RocketLaunchIcon className="w-6 h-6" />,
-        href: '/services#pwa'
+        href: '/services/progressive-web-apps'
       },
       {
         name: 'API Development',
         description: 'RESTful & GraphQL APIs',
         icon: <GlobeAltIcon className="w-6 h-6" />,
-        href: '/services#api-development'
+        href: '/services/api-development'
       }
     ],
     mobileDevelopment: [
@@ -566,27 +571,27 @@ const Navbar = () => {
                    
                    {/* Services Mega Menu */}
                    {item.dropdownType === 'services' && isServicesOpen && (
-                     <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
-                       style={{ left: '50%', transform: 'translateX(-50%)' }}
-                     >
-                       <div className="grid grid-cols-6 gap-6">
+                     <div className="mega-menu active">
+                       <div className="mega-menu-grid">
                          {/* Web Development */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🌐</span>
-                             Web Development
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🌐</span>
+                             <h3 className="mega-menu-category-title">Web Development</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.webDevelopment.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -594,22 +599,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Mobile Development */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">📱</span>
-                             Mobile Development
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">📱</span>
+                             <h3 className="mega-menu-category-title">Mobile Development</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.mobileDevelopment.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -617,22 +624,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* AI & Machine Learning */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🤖</span>
-                             AI & Machine Learning
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🤖</span>
+                             <h3 className="mega-menu-category-title">AI & Machine Learning</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.aiMl.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -640,22 +649,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Cloud & DevOps */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">☁️</span>
-                             Cloud & DevOps
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">☁️</span>
+                             <h3 className="mega-menu-category-title">Cloud & DevOps</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.cloudDevOps.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -663,22 +674,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Consulting */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">💼</span>
-                             Consulting
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">💼</span>
+                             <h3 className="mega-menu-category-title">Consulting</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.consulting.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -686,22 +699,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Maintenance & Support */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🔧</span>
-                             Maintenance & Support
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🔧</span>
+                             <h3 className="mega-menu-category-title">Maintenance & Support</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {services.maintenance.map((service) => (
                                <Link
                                  key={service.name}
                                  to={service.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{service.name}</div>
-                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {service.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{service.name}</div>
+                                   <div className="mega-menu-item-description">{service.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -710,11 +725,11 @@ const Navbar = () => {
                        </div>
                        
                        {/* Bottom CTA */}
-                       <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-                         <p className="text-gray-600 mb-3">Need a custom solution?</p>
+                       <div className="mega-menu-cta">
+                         <p className="mega-menu-cta-text">Need a custom solution?</p>
                          <Link
                            to="/contact"
-                           className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
+                           className="mega-menu-cta-button"
                          >
                            Get Free Consultation
                          </Link>
@@ -724,27 +739,27 @@ const Navbar = () => {
                    
                    {/* Technologies Mega Menu */}
                    {item.dropdownType === 'technologies' && isTechnologiesOpen && (
-                     <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
-                       style={{ left: '50%', transform: 'translateX(-50%)' }}
-                     >
-                       <div className="grid grid-cols-8 gap-6">
+                     <div className="mega-menu active">
+                       <div className="mega-menu-grid">
                          {/* Frontend */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🎨</span>
-                             Frontend
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🎨</span>
+                             <h3 className="mega-menu-category-title">Frontend</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.frontend.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -752,22 +767,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Backend */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">⚙️</span>
-                             Backend
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">⚙️</span>
+                             <h3 className="mega-menu-category-title">Backend</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.backend.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -775,22 +792,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Mobile */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">📱</span>
-                             Mobile
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">📱</span>
+                             <h3 className="mega-menu-category-title">Mobile</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.mobile.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -798,22 +817,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Desktop */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🖥️</span>
-                             Desktop
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🖥️</span>
+                             <h3 className="mega-menu-category-title">Desktop</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.desktop.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -821,22 +842,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Database */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🗄️</span>
-                             Database
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🗄️</span>
+                             <h3 className="mega-menu-category-title">Database</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.database.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -844,22 +867,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Cloud & DevOps */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">☁️</span>
-                             Cloud & DevOps
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">☁️</span>
+                             <h3 className="mega-menu-category-title">Cloud & DevOps</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.cloud.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -867,22 +892,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* AI */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">🤖</span>
-                             AI
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">🤖</span>
+                             <h3 className="mega-menu-category-title">AI</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.ai.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -890,22 +917,24 @@ const Navbar = () => {
                          </div>
                          
                          {/* Crypto Development */}
-                         <div>
-                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                             <span className="mr-2">₿</span>
-                             Crypto Development
-                           </h3>
-                           <div className="space-y-3">
+                         <div className="mega-menu-category">
+                           <div className="mega-menu-category-header">
+                             <span className="mega-menu-category-icon">₿</span>
+                             <h3 className="mega-menu-category-title">Crypto Development</h3>
+                           </div>
+                           <div className="mega-menu-items">
                              {technologies.crypto.map((tech) => (
                                <Link
                                  key={tech.name}
                                  to={tech.href}
-                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                                 className="mega-menu-item"
                                >
-                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                                 <div>
-                                   <div className="font-medium text-custom-dark">{tech.name}</div>
-                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 <div className="mega-menu-item-icon">
+                                   {tech.icon}
+                                 </div>
+                                 <div className="mega-menu-item-content">
+                                   <div className="mega-menu-item-title">{tech.name}</div>
+                                   <div className="mega-menu-item-description">{tech.description}</div>
                                  </div>
                                </Link>
                              ))}
@@ -914,11 +943,11 @@ const Navbar = () => {
                        </div>
                        
                        {/* Bottom CTA */}
-                       <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-                         <p className="text-gray-600 mb-3">Need a specific technology solution?</p>
+                       <div className="mega-menu-cta">
+                         <p className="mega-menu-cta-text">Need a specific technology solution?</p>
                          <Link
                            to="/contact"
-                           className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
+                           className="mega-menu-cta-button"
                          >
                            Get Custom Quote
                          </Link>
@@ -944,18 +973,14 @@ const Navbar = () => {
                )
              ))}
              
-             <Link
-               to="/contact"
-               className="btn-primary text-sm"
-             >
-               Get Started
-             </Link>
+             
+             <LanguageSwitcher isScrolled={isScrolled} />
              
              <Link
                to="/login"
                className="btn-primary text-sm ml-2"
              >
-               Client Login
+               {t('navigation.clientLogin')}
              </Link>
           </div>
 
@@ -976,11 +1001,13 @@ const Navbar = () => {
                )}
              </button>
              
+             <LanguageSwitcher isScrolled={isScrolled} />
+             
              <Link
                to="/login"
                className="btn-primary text-sm"
              >
-               Client Login
+               {t('navigation.clientLogin')}
              </Link>
            </div>
         </div>
@@ -1055,14 +1082,6 @@ const Navbar = () => {
                    ))}
                  </div>
                </div>
-              
-                             <Link
-                 to="/contact"
-                 className="block px-3 py-2 mt-4 text-center btn-primary"
-                 onClick={() => setIsOpen(false)}
-               >
-                 Get Started
-               </Link>
             </div>
           </div>
         )}

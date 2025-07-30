@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Hjem",
+    "services": "Tjenester",
+    "technologies": "Teknologier",
+    "projects": "Prosjekter",
+    "caseStudies": "Case Studies",
+    "about": "Om oss",
+    "contact": "Kontakt",
+    "getStarted": "Kom i gang",
+    "clientLogin": "Klient pålogging"
+  },
+  "common": {
+    "language": "Språk",
+    "selectLanguage": "Velg språk"
+  }
+} 

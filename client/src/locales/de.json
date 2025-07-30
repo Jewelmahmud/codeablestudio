@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "technologies": "Technologien",
+    "projects": "Projekte",
+    "caseStudies": "Fallstudien",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "getStarted": "Loslegen",
+    "clientLogin": "Kunden-Login"
+  },
+  "common": {
+    "language": "Sprache",
+    "selectLanguage": "Sprache auswählen"
+  }
+} 

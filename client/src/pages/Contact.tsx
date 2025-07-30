@@ -87,7 +87,7 @@ const Contact = () => {
     {
       icon: <MapPinIcon className="h-6 w-6" />,
       title: 'Address',
-      content: '123 Innovation Drive, Tech City, TC 12345',
+      content: '110 Bishopsgate State, London, EC2M 4AN',
       link: '#'
     },
     {
