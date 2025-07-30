@@ -51,13 +51,13 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
   res.json({
     contact: {
-      email: 'hello@codeablestudio.com',
+      email: 'hello@codablestudio.com',
       phone: '+1 (555) 123-4567',
       address: '123 Innovation Drive, Tech City, TC 12345',
       social: {
-        linkedin: 'https://linkedin.com/company/codeablestudio',
-        twitter: 'https://twitter.com/codeablestudio',
-        github: 'https://github.com/codeablestudio'
+        linkedin: 'https://linkedin.com/company/codablestudio',
+        twitter: 'https://twitter.com/codablestudio',
+        github: 'https://github.com/codablestudio'
       }
     }
   });

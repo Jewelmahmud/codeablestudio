@@ -34,11 +34,13 @@ const Navbar = () => {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '/', type: 'link' },
+    { name: 'Services', href: '/services', type: 'dropdown', dropdownType: 'services' },
+    { name: 'Technologies', href: '/technologies', type: 'dropdown', dropdownType: 'technologies' },
+    { name: 'Projects', href: '/projects', type: 'link' },
+    { name: 'Case Studies', href: '/case-studies', type: 'link' },
+    { name: 'About', href: '/about', type: 'link' },
+    { name: 'Contact', href: '/contact', type: 'link' },
   ];
 
   const services = {
@@ -532,436 +534,417 @@ const Navbar = () => {
              </div>
              <span className={`text-xl font-bold transition-colors duration-200 ${
                                isScrolled ? 'text-custom-dark' : 'text-white'
-             }`}>Codeable Studio</span>
+             }`}>Codable Studio</span>
            </Link>
 
                      {/* Desktop Navigation */}
                        <div className="hidden md:flex items-center space-x-6">
              {navigation.map((item) => (
-               <Link
-                 key={item.name}
-                 to={item.href}
-                 className={`text-sm font-medium transition-colors duration-200 ${
-                   isActive(item.href)
-                     ? 'text-primary-600'
-                     : isScrolled 
-                       ? 'text-gray-700 hover:text-primary-600' 
-                       : 'text-white hover:text-primary-600'
-                 }`}
-               >
-                 {item.name}
-               </Link>
+               item.type === 'dropdown' ? (
+                 // Render dropdown menu
+                 <div 
+                   key={item.name}
+                   className="relative"
+                   onMouseEnter={() => item.dropdownType === 'services' ? setIsServicesOpen(true) : setIsTechnologiesOpen(true)}
+                   onMouseLeave={() => item.dropdownType === 'services' ? setIsServicesOpen(false) : setIsTechnologiesOpen(false)}
+                 >
+                   <button
+                     className={`flex items-center text-sm font-medium transition-colors duration-200 ${
+                       isScrolled 
+                         ? 'text-gray-700 hover:text-primary-600' 
+                         : 'text-white hover:text-primary-600'
+                     }`}
+                   >
+                     {item.name}
+                     <ChevronDownIcon className="ml-1 h-4 w-4" />
+                   </button>
+                   
+                   {/* Invisible bridge to prevent mouse leave */}
+                   {(item.dropdownType === 'services' ? isServicesOpen : isTechnologiesOpen) && (
+                     <div className="absolute top-full left-0 w-full h-6 bg-transparent"></div>
+                   )}
+                   
+                   {/* Services Mega Menu */}
+                   {item.dropdownType === 'services' && isServicesOpen && (
+                     <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
+                       style={{ left: '50%', transform: 'translateX(-50%)' }}
+                     >
+                       <div className="grid grid-cols-6 gap-6">
+                         {/* Web Development */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🌐</span>
+                             Web Development
+                           </h3>
+                           <div className="space-y-3">
+                             {services.webDevelopment.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Mobile Development */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">📱</span>
+                             Mobile Development
+                           </h3>
+                           <div className="space-y-3">
+                             {services.mobileDevelopment.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* AI & Machine Learning */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🤖</span>
+                             AI & Machine Learning
+                           </h3>
+                           <div className="space-y-3">
+                             {services.aiMl.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Cloud & DevOps */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">☁️</span>
+                             Cloud & DevOps
+                           </h3>
+                           <div className="space-y-3">
+                             {services.cloudDevOps.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Consulting */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">💼</span>
+                             Consulting
+                           </h3>
+                           <div className="space-y-3">
+                             {services.consulting.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Maintenance & Support */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🔧</span>
+                             Maintenance & Support
+                           </h3>
+                           <div className="space-y-3">
+                             {services.maintenance.map((service) => (
+                               <Link
+                                 key={service.name}
+                                 to={service.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{service.name}</div>
+                                   <div className="text-sm text-gray-600">{service.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                       </div>
+                       
+                       {/* Bottom CTA */}
+                       <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+                         <p className="text-gray-600 mb-3">Need a custom solution?</p>
+                         <Link
+                           to="/contact"
+                           className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
+                         >
+                           Get Free Consultation
+                         </Link>
+                       </div>
+                     </div>
+                   )}
+                   
+                   {/* Technologies Mega Menu */}
+                   {item.dropdownType === 'technologies' && isTechnologiesOpen && (
+                     <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
+                       style={{ left: '50%', transform: 'translateX(-50%)' }}
+                     >
+                       <div className="grid grid-cols-8 gap-6">
+                         {/* Frontend */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🎨</span>
+                             Frontend
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.frontend.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Backend */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">⚙️</span>
+                             Backend
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.backend.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Mobile */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">📱</span>
+                             Mobile
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.mobile.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Desktop */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🖥️</span>
+                             Desktop
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.desktop.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Database */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🗄️</span>
+                             Database
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.database.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Cloud & DevOps */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">☁️</span>
+                             Cloud & DevOps
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.cloud.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* AI */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">🤖</span>
+                             AI
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.ai.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                         
+                         {/* Crypto Development */}
+                         <div>
+                           <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
+                             <span className="mr-2">₿</span>
+                             Crypto Development
+                           </h3>
+                           <div className="space-y-3">
+                             {technologies.crypto.map((tech) => (
+                               <Link
+                                 key={tech.name}
+                                 to={tech.href}
+                                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                               >
+                                 <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
+                                 <div>
+                                   <div className="font-medium text-custom-dark">{tech.name}</div>
+                                   <div className="text-sm text-gray-600">{tech.description}</div>
+                                 </div>
+                               </Link>
+                             ))}
+                           </div>
+                         </div>
+                       </div>
+                       
+                       {/* Bottom CTA */}
+                       <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+                         <p className="text-gray-600 mb-3">Need a specific technology solution?</p>
+                         <Link
+                           to="/contact"
+                           className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
+                         >
+                           Get Custom Quote
+                         </Link>
+                       </div>
+                     </div>
+                   )}
+                 </div>
+               ) : (
+                 // Render regular link
+                 <Link
+                   key={item.name}
+                   to={item.href}
+                   className={`text-sm font-medium transition-colors duration-200 ${
+                     isActive(item.href)
+                       ? 'text-[rgb(158_169_193)]'
+                       : isScrolled 
+                         ? 'text-gray-700 hover:text-primary-600' 
+                         : 'text-white hover:text-primary-600'
+                   }`}
+                 >
+                   {item.name}
+                 </Link>
+               )
              ))}
              
-                          {/* Services Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
-              >
-                <button
-                  className={`flex items-center text-sm font-medium transition-colors duration-200 ${
-                    isScrolled 
-                      ? 'text-gray-700 hover:text-primary-600' 
-                      : 'text-white hover:text-primary-600'
-                  }`}
-                >
-                  Services
-                  <ChevronDownIcon className="ml-1 h-4 w-4" />
-                </button>
-                
-                {/* Invisible bridge to prevent mouse leave */}
-                {isServicesOpen && (
-                  <div className="absolute top-full left-0 w-full h-6 bg-transparent"></div>
-                )}
-                
-                {/* Services Mega Menu */}
-                {isServicesOpen && (
-                  <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
-                    style={{ left: '50%', transform: 'translateX(-50%)' }}
-                  >
-                    <div className="grid grid-cols-6 gap-6">
-                      {/* Web Development */}
-                      <div>
-                                          <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                    <span className="mr-2">🌐</span>
-                    Web Development
-                  </h3>
-                        <div className="space-y-3">
-                          {services.webDevelopment.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Mobile Development */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                          <span className="mr-2">📱</span>
-                          Mobile Development
-                        </h3>
-                        <div className="space-y-3">
-                          {services.mobileDevelopment.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* AI & Machine Learning */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                          <span className="mr-2">🤖</span>
-                          AI & Machine Learning
-                        </h3>
-                        <div className="space-y-3">
-                          {services.aiMl.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Cloud & DevOps */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                          <span className="mr-2">☁️</span>
-                          Cloud & DevOps
-                        </h3>
-                        <div className="space-y-3">
-                          {services.cloudDevOps.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Consulting */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                          <span className="mr-2">💼</span>
-                          Consulting
-                        </h3>
-                        <div className="space-y-3">
-                          {services.consulting.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Maintenance & Support */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                          <span className="mr-2">🔧</span>
-                          Maintenance & Support
-                        </h3>
-                        <div className="space-y-3">
-                          {services.maintenance.map((service) => (
-                            <Link
-                              key={service.name}
-                              to={service.href}
-                              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                            >
-                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
-                              <div>
-                                <div className="font-medium text-custom-dark">{service.name}</div>
-                                <div className="text-sm text-gray-600">{service.description}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Bottom CTA */}
-                    <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-                      <p className="text-gray-600 mb-3">Need a custom solution?</p>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
-                      >
-                        Get Free Consultation
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-             
-                          {/* Technologies Dropdown */}
-             <div 
-               className="relative"
-               onMouseEnter={() => setIsTechnologiesOpen(true)}
-               onMouseLeave={() => setIsTechnologiesOpen(false)}
-             >
-               <button
-                 className={`flex items-center text-sm font-medium transition-colors duration-200 ${
-                   isScrolled 
-                     ? 'text-gray-700 hover:text-primary-600' 
-                     : 'text-white hover:text-primary-600'
-                 }`}
-               >
-                 Technologies
-                 <ChevronDownIcon className="ml-1 h-4 w-4" />
-               </button>
-               
-               {/* Invisible bridge to prevent mouse leave */}
-               {isTechnologiesOpen && (
-                 <div className="absolute top-full left-0 w-full h-6 bg-transparent"></div>
-               )}
-               
-                              {/* Mega Menu */}
-                                       {isTechnologiesOpen && (
-                          <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
-                            style={{ left: '50%', transform: 'translateX(-50%)' }}
-                          >
-                   <div className="grid grid-cols-8 gap-6">
-                    {/* Frontend */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                        <span className="mr-2">🎨</span>
-                        Frontend
-                      </h3>
-                      <div className="space-y-3">
-                        {technologies.frontend.map((tech) => (
-                          <Link
-                            key={tech.name}
-                            to={tech.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                            <div>
-                              <div className="font-medium text-custom-dark">{tech.name}</div>
-                              <div className="text-sm text-gray-600">{tech.description}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    
-                                         {/* Backend */}
-                     <div>
-                       <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                         <span className="mr-2">⚙️</span>
-                         Backend
-                       </h3>
-                       <div className="space-y-3">
-                         {technologies.backend.map((tech) => (
-                           <Link
-                             key={tech.name}
-                             to={tech.href}
-                             className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                           >
-                             <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                             <div>
-                               <div className="font-medium text-custom-dark">{tech.name}</div>
-                               <div className="text-sm text-gray-600">{tech.description}</div>
-                             </div>
-                           </Link>
-                         ))}
-                       </div>
-                     </div>
-                     
-                     {/* Mobile */}
-                     <div>
-                       <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                         <span className="mr-2">📱</span>
-                         Mobile
-                       </h3>
-                       <div className="space-y-3">
-                         {technologies.mobile.map((tech) => (
-                           <Link
-                             key={tech.name}
-                             to={tech.href}
-                             className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                           >
-                             <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                             <div>
-                               <div className="font-medium text-custom-dark">{tech.name}</div>
-                               <div className="text-sm text-gray-600">{tech.description}</div>
-                             </div>
-                           </Link>
-                         ))}
-                       </div>
-                     </div>
-                     
-                     {/* Desktop */}
-                     <div>
-                       <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                         <span className="mr-2">🖥️</span>
-                         Desktop
-                       </h3>
-                       <div className="space-y-3">
-                         {technologies.desktop.map((tech) => (
-                           <Link
-                             key={tech.name}
-                             to={tech.href}
-                             className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                           >
-                             <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                             <div>
-                               <div className="font-medium text-custom-dark">{tech.name}</div>
-                               <div className="text-sm text-gray-600">{tech.description}</div>
-                             </div>
-                           </Link>
-                         ))}
-                       </div>
-                     </div>
-                     
-                     {/* Database */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                        <span className="mr-2">🗄️</span>
-                        Database
-                      </h3>
-                      <div className="space-y-3">
-                        {technologies.database.map((tech) => (
-                          <Link
-                            key={tech.name}
-                            to={tech.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                            <div>
-                              <div className="font-medium text-custom-dark">{tech.name}</div>
-                              <div className="text-sm text-gray-600">{tech.description}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Cloud & DevOps */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                        <span className="mr-2">☁️</span>
-                        Cloud & DevOps
-                      </h3>
-                      <div className="space-y-3">
-                        {technologies.cloud.map((tech) => (
-                          <Link
-                            key={tech.name}
-                            to={tech.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                            <div>
-                              <div className="font-medium text-custom-dark">{tech.name}</div>
-                              <div className="text-sm text-gray-600">{tech.description}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* AI */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                        <span className="mr-2">🤖</span>
-                        AI
-                      </h3>
-                      <div className="space-y-3">
-                        {technologies.ai.map((tech) => (
-                          <Link
-                            key={tech.name}
-                            to={tech.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                            <div>
-                              <div className="font-medium text-custom-dark">{tech.name}</div>
-                              <div className="text-sm text-gray-600">{tech.description}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Crypto Development */}
-                    <div>
-                      <h3 className="text-lg font-semibold text-custom-dark mb-4 flex items-center">
-                        <span className="mr-2">₿</span>
-                        Crypto Development
-                      </h3>
-                      <div className="space-y-3">
-                        {technologies.crypto.map((tech) => (
-                          <Link
-                            key={tech.name}
-                            to={tech.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <span className="w-8 h-8 flex items-center justify-center">{tech.icon}</span>
-                            <div>
-                              <div className="font-medium text-custom-dark">{tech.name}</div>
-                              <div className="text-sm text-gray-600">{tech.description}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Bottom CTA */}
-                  <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-                    <p className="text-gray-600 mb-3">Need a specific technology solution?</p>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
-                    >
-                      Get Custom Quote
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-                         <Link
+             <Link
                to="/contact"
                className="btn-primary text-sm"
              >

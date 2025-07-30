@@ -39,7 +39,7 @@ const CaseStudies = () => {
       technologies: ['React', 'Node.js', 'MongoDB', 'Redis', 'AWS'],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
       testimonial: {
-        content: 'CodeableStudio transformed our entire digital presence. The new platform exceeded all our expectations and delivered measurable business results.',
+        content: 'CodableStudio transformed our entire digital presence. The new platform exceeded all our expectations and delivered measurable business results.',
         author: 'Sarah Johnson',
         role: 'CTO, TechRetail Inc.',
         rating: 5

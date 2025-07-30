@@ -134,7 +134,7 @@ const Invoices = () => {
                 <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">CS</span>
                 </div>
-                <span className="text-lg font-bold text-white">Codeable Studio</span>
+                <span className="text-lg font-bold text-white">Codable Studio</span>
               </Link>
             </div>
           </div>

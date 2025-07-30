@@ -1017,11 +1017,12 @@ const WebApplicationDevelopment = () => {
   ];
 
   const hostingOptions = [
-    { id: 'shared', name: 'Shared Hosting', price: 0, description: 'Basic shared hosting environment', icon: <CloudIcon className="w-6 h-6" /> },
+    { id: 'shared', name: 'Shared Hosting', price: 20, description: 'Basic shared hosting environment', icon: <CloudIcon className="w-6 h-6" /> },
     { id: 'vps', name: 'VPS Hosting', price: 2000, description: 'Virtual private server with dedicated resources', icon: <ServerIcon className="w-6 h-6" /> },
     { id: 'dedicated', name: 'Dedicated Server', price: 5000, description: 'Full dedicated server with maximum control', icon: <CogIcon className="w-6 h-6" /> },
     { id: 'cloud', name: 'Cloud Hosting (AWS/Azure)', price: 3000, description: 'Scalable cloud infrastructure with auto-scaling', icon: <GlobeAltIcon className="w-6 h-6" /> },
-    { id: 'managed', name: 'Managed Cloud', price: 4000, description: 'Fully managed cloud hosting with monitoring', icon: <ShieldCheckIcon className="w-6 h-6" /> }
+    { id: 'managed', name: 'Managed Cloud', price: 4000, description: 'Fully managed cloud hosting with monitoring', icon: <ShieldCheckIcon className="w-6 h-6" /> },
+    { id: 'existing', name: 'I already have hosting', price: 0, description: 'Use your existing hosting infrastructure', icon: <CheckCircleIcon className="w-6 h-6" /> }
   ];
 
   const calculateTotal = () => {
@@ -1356,10 +1357,26 @@ const WebApplicationDevelopment = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
+      {/* Hero Section with Background Video */}
+      <div className="relative h-[calc(100vh-200px)] overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/coding.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Transparent Blue Overlay */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgb(37 99 235 / 82%)' }}></div>
+        
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <div className="text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

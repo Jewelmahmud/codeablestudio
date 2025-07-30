@@ -1,12 +1,12 @@
 # Stripe Payment Integration Setup
 
-This guide will help you set up Stripe payment processing for the CodeableStudio invoice system.
+This guide will help you set up Stripe payment processing for the CodableStudio invoice system.
 
 ## Prerequisites
 
 1. A Stripe account (sign up at https://stripe.com)
 2. Node.js and npm installed
-3. The CodeableStudio project set up
+3. The CodableStudio project set up
 
 ## Setup Steps
 

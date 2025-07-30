@@ -30,7 +30,7 @@ app.use('/api/payments', paymentsRouter);
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
-    message: 'CodeableStudio API is running',
+    message: 'CodableStudio API is running',
     timestamp: new Date().toISOString()
   });
 });
@@ -38,7 +38,7 @@ app.get('/api/health', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({ 
-    message: 'Welcome to CodeableStudio API',
+    message: 'Welcome to CodableStudio API',
     version: '1.0.0',
           endpoints: {
         health: '/api/health',
@@ -65,6 +65,6 @@ app.use('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 CodeableStudio server running on port ${PORT}`);
+  console.log(`🚀 CodableStudio server running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-}); 
+});

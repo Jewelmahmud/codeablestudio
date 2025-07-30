@@ -95,7 +95,7 @@ const Login = () => {
               <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-2xl">CS</span>
               </div>
-              <span className="text-2xl font-bold text-white">Codeable Studio</span>
+              <span className="text-2xl font-bold text-white">Codable Studio</span>
             </Link>
             
             <h2 className="text-3xl font-bold text-white mb-2">

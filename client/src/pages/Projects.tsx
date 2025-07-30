@@ -132,24 +132,42 @@ const Projects = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our Projects
-            </h1>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Explore our portfolio of successful projects that demonstrate our expertise in software development and digital innovation.
-            </p>
-          </motion.div>
+    <div className="min-h-screen">
+      {/* Hero Section with Background Video */}
+      <div className="relative h-[calc(100vh-200px)] overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/project.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Transparent Blue Overlay */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgb(37 99 235 / 82%)' }}></div>
+        
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <div className="text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Our Projects
+              </h1>
+              <p className="text-xl text-white max-w-3xl mx-auto">
+                Explore our portfolio of successful projects that demonstrate our expertise in software development and digital innovation.
+              </p>
+            </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Category Filter */}
       <section className="py-12 bg-white">

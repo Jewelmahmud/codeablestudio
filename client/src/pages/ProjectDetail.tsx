@@ -49,9 +49,9 @@ const ProjectDetail = () => {
       { id: 6, title: 'Deployment', status: 'pending', progress: 0, dueDate: '2024-02-15' }
     ],
     devLinks: {
-      staging: 'https://staging-ecommerce.codeablestudio.com',
-      production: 'https://ecommerce.codeablestudio.com',
-      github: 'https://github.com/codeablestudio/ecommerce-platform',
+      staging: 'https://staging-ecommerce.codablestudio.com',
+      production: 'https://ecommerce.codablestudio.com',
+      github: 'https://github.com/codablestudio/ecommerce-platform',
       figma: 'https://figma.com/file/ecommerce-design'
     },
     feedback: [

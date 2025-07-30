@@ -1,7 +1,7 @@
 {
-  "name": "codeablestudio-server",
+  "name": "codablestudio-server",
   "version": "1.0.0",
-  "description": "Backend server for CodeableStudio - Software Development Company",
+  "description": "Backend server for CodableStudio - Software Development Company",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["software-development", "api", "express", "typescript"],
-  "author": "CodeableStudio",
+  "author": "CodableStudio",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

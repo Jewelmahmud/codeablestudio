@@ -65,7 +65,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About CodeableStudio
+              About CodableStudio
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               We are a team of passionate developers, designers, and innovators dedicated to transforming businesses through technology.
@@ -90,7 +90,7 @@ const About = () => {
                 To empower businesses with innovative software solutions that drive growth, efficiency, and digital transformation.
               </p>
               <p className="text-gray-600 mb-8">
-                Founded in 2019, CodeableStudio has been at the forefront of digital innovation, helping companies of all sizes navigate the complex world of software development. We believe that technology should work for you, not against you.
+                Founded in 2019, CodableStudio has been at the forefront of digital innovation, helping companies of all sizes navigate the complex world of software development. We believe that technology should work for you, not against you.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="text-center">

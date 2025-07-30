@@ -1,6 +1,6 @@
-# CodeableStudio - Software Development Company Website
+# CodableStudio - Software Development Company Website
 
-A modern, responsive website for CodeableStudio, a software development company. Built with React, TypeScript, Tailwind CSS, and Express.js.
+A modern, responsive website for CodableStudio, a software development company. Built with React, TypeScript, Tailwind CSS, and Express.js.
 
 ## 🚀 Features
 
@@ -33,7 +33,7 @@ A modern, responsive website for CodeableStudio, a software development company.
 ## 📁 Project Structure
 
 ```
-CodeableStudio/
+CodableStudio/
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── components/     # Reusable components
@@ -64,7 +64,7 @@ CodeableStudio/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd CodeableStudio
+   cd CodableStudio
    ```
 
 2. **Install dependencies**
@@ -193,8 +193,8 @@ This project is licensed under the ISC License.
 
 ## 📞 Contact
 
-CodeableStudio - hello@codeablestudio.com
+CodableStudio - hello@codablestudio.com
 
 ---
 
-Built with ❤️ by CodeableStudio 
+Built with ❤️ by CodableStudio 

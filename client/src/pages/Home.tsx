@@ -62,14 +62,14 @@ const Home = () => {
     {
       name: 'Sarah Johnson',
       role: 'CEO, TechStart Inc.',
-      content: 'CodeableStudio transformed our business with a custom CRM solution. The team was professional, responsive, and delivered beyond our expectations.',
+      content: 'CodableStudio transformed our business with a custom CRM solution. The team was professional, responsive, and delivered beyond our expectations.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
       role: 'CTO, InnovateCorp',
-      content: 'Working with CodeableStudio was a game-changer. Their expertise in AI and machine learning helped us automate 70% of our manual processes.',
+      content: 'Working with CodableStudio was a game-changer. Their expertise in AI and machine learning helped us automate 70% of our manual processes.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
@@ -471,7 +471,7 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-6">
-                Why Choose CodeableStudio?
+                Why Choose CodableStudio?
               </h2>
               <p className="text-xl text-gray-600 mb-8">
                 We combine technical expertise with business acumen to deliver solutions that not only work flawlessly but also drive real business value.
