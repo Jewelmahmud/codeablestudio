@@ -427,7 +427,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Our Core Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -449,7 +449,7 @@ const Home = () => {
                     {feature.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-custom-dark mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600">
@@ -470,7 +470,7 @@ const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-6">
                 Why Choose CodeableStudio?
               </h2>
               <p className="text-xl text-gray-600 mb-8">
@@ -524,7 +524,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               What Our Clients Say
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -554,7 +554,7 @@ const Home = () => {
                     className="w-12 h-12 rounded-full mr-4"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    <h4 className="font-semibold text-custom-dark">{testimonial.name}</h4>
                     <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </div>
@@ -573,7 +573,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Our Technology Stack
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -591,7 +591,7 @@ const Home = () => {
                 className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="text-3xl mb-2">{tech.icon}</div>
-                <h3 className="font-semibold text-gray-900 text-sm">{tech.name}</h3>
+                <h3 className="font-semibold text-custom-dark text-sm">{tech.name}</h3>
                 <p className="text-xs text-gray-500">{tech.category}</p>
               </motion.div>
             ))}
@@ -608,7 +608,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Our Development Process
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -633,7 +633,7 @@ const Home = () => {
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
+                <h3 className="text-xl font-semibold text-custom-dark mb-3 text-center">
                   {step.title}
                 </h3>
                 <p className="text-gray-600 text-center">
@@ -654,7 +654,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Meet Our Expert Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -681,7 +681,7 @@ const Home = () => {
                     <UserGroupIcon className="h-4 w-4 text-white" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                <h3 className="text-xl font-semibold text-custom-dark mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-2">{member.role}</p>
                 <p className="text-sm text-gray-600">{member.expertise}</p>
               </motion.div>
@@ -699,7 +699,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Latest Insights & News
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -726,7 +726,7 @@ const Home = () => {
                     <span className="text-sm font-medium text-primary-600">{post.category}</span>
                     <span className="text-sm text-gray-500">{post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                  <h3 className="text-xl font-semibold text-custom-dark mb-3 line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-gray-600 mb-4 line-clamp-3">

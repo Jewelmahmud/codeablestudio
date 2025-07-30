@@ -8,28 +8,17 @@ import {
   BriefcaseIcon,
   AcademicCapIcon,
   HeartIcon,
-  SparklesIcon,
-  RocketLaunchIcon,
   UserGroupIcon,
   GlobeAltIcon,
-  CpuChipIcon,
-  CodeBracketIcon,
-  DevicePhoneMobileIcon,
-  ChatBubbleLeftRightIcon,
-  ChartBarIcon,
-  ShieldCheckIcon,
   ArrowRightIcon,
   CheckCircleIcon,
   StarIcon,
-  BuildingOfficeIcon,
   UsersIcon,
   LightBulbIcon,
   TrophyIcon,
   GiftIcon,
   CalendarIcon,
-  WifiIcon,
-  ComputerDesktopIcon,
-  BookOpenIcon
+  ComputerDesktopIcon
 } from '@heroicons/react/24/outline';
 
 const Careers = () => {
@@ -354,7 +343,7 @@ const Careers = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Our Values
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -374,7 +363,7 @@ const Careers = () => {
                 <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-600">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-custom-dark mb-2">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
               </motion.div>
             ))}
@@ -391,7 +380,7 @@ const Careers = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Why Work With Us
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -411,7 +400,7 @@ const Careers = () => {
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-600">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold text-custom-dark mb-2">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </motion.div>
             ))}
@@ -428,7 +417,7 @@ const Careers = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-custom-dark mb-4">
               Open Positions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -470,7 +459,7 @@ const Careers = () => {
               >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{job.title}</h3>
+                    <h3 className="text-xl font-semibold text-custom-dark mb-2">{job.title}</h3>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                       <div className="flex items-center">
                         <BriefcaseIcon className="w-4 h-4 mr-1" />
@@ -506,7 +495,7 @@ const Careers = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Requirements</h4>
+                    <h4 className="font-semibold text-custom-dark mb-2">Requirements</h4>
                     <ul className="space-y-1">
                       {job.requirements.map((req, idx) => (
                         <li key={idx} className="flex items-start text-sm text-gray-600">
@@ -517,7 +506,7 @@ const Careers = () => {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Benefits</h4>
+                    <h4 className="font-semibold text-custom-dark mb-2">Benefits</h4>
                     <ul className="space-y-1">
                       {job.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-start text-sm text-gray-600">

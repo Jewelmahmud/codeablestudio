@@ -260,9 +260,9 @@ const CaseStudies = () => {
 
                 {/* Content */}
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {study.title}
-                  </h3>
+                                  <h3 className="text-2xl font-bold text-custom-dark mb-4">
+                  {study.title}
+                </h3>
                   
                   {/* Project Details */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
@@ -286,16 +286,16 @@ const CaseStudies = () => {
 
                   {/* Challenge & Solution */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-2">Challenge</h4>
+                    <h4 className="font-semibold text-custom-dark mb-2">Challenge</h4>
                     <p className="text-gray-600 text-sm mb-4">{study.challenge}</p>
                     
-                    <h4 className="font-semibold text-gray-900 mb-2">Solution</h4>
+                                          <h4 className="font-semibold text-custom-dark mb-2">Solution</h4>
                     <p className="text-gray-600 text-sm mb-4">{study.solution}</p>
                   </div>
 
                   {/* Results */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Key Results</h4>
+                    <h4 className="font-semibold text-custom-dark mb-3">Key Results</h4>
                     <div className="space-y-2">
                       {study.results.map((result, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
@@ -308,7 +308,7 @@ const CaseStudies = () => {
 
                   {/* Technologies */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Technologies Used</h4>
+                    <h4 className="font-semibold text-custom-dark mb-3">Technologies Used</h4>
                     <div className="flex flex-wrap gap-2">
                       {study.technologies.map((tech, idx) => (
                         <span
@@ -332,7 +332,7 @@ const CaseStudies = () => {
                       "{study.testimonial.content}"
                     </p>
                     <div className="text-sm">
-                      <span className="font-semibold text-gray-900">{study.testimonial.author}</span>
+                                              <span className="font-semibold text-custom-dark">{study.testimonial.author}</span>
                       <span className="text-gray-500"> - {study.testimonial.role}</span>
                     </div>
                   </div>

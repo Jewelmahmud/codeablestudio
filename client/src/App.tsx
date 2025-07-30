@@ -15,6 +15,7 @@ import Dashboard from './client/Dashboard';
 import ProjectDetail from './pages/ProjectDetail';
 import Invoices from './pages/Invoices';
 import Payment from './pages/Payment';
+import WebApplicationDevelopment from './services/WebApplicationDevelopment';
 import ScrollToTop from './components/ScrollToTop';
 
 function AppContent() {
@@ -29,8 +30,10 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/web-application-development" element={<WebApplicationDevelopment />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />

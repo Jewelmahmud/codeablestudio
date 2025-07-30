@@ -129,7 +129,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="card p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-custom-dark mb-6">
                   Send us a Message
                 </h2>
                 
