@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { 
+  Bars3Icon, 
+  XMarkIcon, 
+  ChevronDownIcon,
+  CodeBracketIcon,
+  DevicePhoneMobileIcon,
+  RocketLaunchIcon,
+  GlobeAltIcon,
+  ShieldCheckIcon,
+  CpuChipIcon,
+  ChatBubbleLeftRightIcon,
+  ChartBarIcon,
+  UserGroupIcon,
+  ClockIcon,
+  SparklesIcon
+} from '@heroicons/react/24/outline';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTechnologiesOpen, setIsTechnologiesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,11 +35,146 @@ const Navbar = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
+    { name: 'Case Studies', href: '/case-studies' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
+
+  const services = {
+    webDevelopment: [
+      {
+        name: 'Custom Web Applications',
+        description: 'Scalable web solutions',
+        icon: <CodeBracketIcon className="w-6 h-6" />
+      },
+      {
+        name: 'E-commerce Platforms',
+        description: 'Online store solutions',
+        icon: <DevicePhoneMobileIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Progressive Web Apps',
+        description: 'Modern PWA development',
+        icon: <RocketLaunchIcon className="w-6 h-6" />
+      },
+      {
+        name: 'API Development',
+        description: 'RESTful & GraphQL APIs',
+        icon: <GlobeAltIcon className="w-6 h-6" />
+      }
+    ],
+    mobileDevelopment: [
+      {
+        name: 'iOS Development',
+        description: 'Native iPhone apps',
+        icon: <DevicePhoneMobileIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Android Development',
+        description: 'Native Android apps',
+        icon: <DevicePhoneMobileIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Cross-platform Apps',
+        description: 'React Native & Flutter',
+        icon: <DevicePhoneMobileIcon className="w-6 h-6" />
+      },
+      {
+        name: 'App Maintenance',
+        description: 'Updates & support',
+        icon: <ShieldCheckIcon className="w-6 h-6" />
+      }
+    ],
+    aiMl: [
+      {
+        name: 'Machine Learning',
+        description: 'Custom ML models',
+        icon: <CpuChipIcon className="w-6 h-6" />
+      },
+      {
+        name: 'AI Chatbots',
+        description: 'Intelligent automation',
+        icon: <ChatBubbleLeftRightIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Data Analytics',
+        description: 'Business intelligence',
+        icon: <ChartBarIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Computer Vision',
+        description: 'Image recognition',
+        icon: <SparklesIcon className="w-6 h-6" />
+      }
+    ],
+    cloudDevOps: [
+      {
+        name: 'Cloud Migration',
+        description: 'AWS, Azure, GCP',
+        icon: <GlobeAltIcon className="w-6 h-6" />
+      },
+      {
+        name: 'DevOps Automation',
+        description: 'CI/CD pipelines',
+        icon: <RocketLaunchIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Containerization',
+        description: 'Docker & Kubernetes',
+        icon: <ShieldCheckIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Server Management',
+        description: '24/7 monitoring',
+        icon: <ClockIcon className="w-6 h-6" />
+      }
+    ],
+    consulting: [
+      {
+        name: 'Technical Consulting',
+        description: 'Expert guidance',
+        icon: <UserGroupIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Architecture Design',
+        description: 'System planning',
+        icon: <CodeBracketIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Code Review',
+        description: 'Quality assurance',
+        icon: <ShieldCheckIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Performance Optimization',
+        description: 'Speed improvements',
+        icon: <RocketLaunchIcon className="w-6 h-6" />
+      }
+    ],
+    maintenance: [
+      {
+        name: 'Bug Fixes',
+        description: 'Issue resolution',
+        icon: <ShieldCheckIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Feature Updates',
+        description: 'New functionality',
+        icon: <SparklesIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Security Updates',
+        description: 'Vulnerability patches',
+        icon: <ShieldCheckIcon className="w-6 h-6" />
+      },
+      {
+        name: 'Performance Monitoring',
+        description: '24/7 oversight',
+        icon: <ClockIcon className="w-6 h-6" />
+      }
+    ]
+  };
 
   const technologies = {
     frontend: [
@@ -313,24 +464,181 @@ const Navbar = () => {
            </Link>
 
                      {/* Desktop Navigation */}
-           <div className="hidden md:flex items-center space-x-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? 'text-primary-600'
-                    : isScrolled 
+                       <div className="hidden md:flex items-center space-x-6">
+             {navigation.map((item) => (
+               <Link
+                 key={item.name}
+                 to={item.href}
+                 className={`text-sm font-medium transition-colors duration-200 ${
+                   isActive(item.href)
+                     ? 'text-primary-600'
+                     : isScrolled 
+                       ? 'text-gray-700 hover:text-primary-600' 
+                       : 'text-white hover:text-primary-600'
+                 }`}
+               >
+                 {item.name}
+               </Link>
+             ))}
+             
+                          {/* Services Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
+                <button
+                  className={`flex items-center text-sm font-medium transition-colors duration-200 ${
+                    isScrolled 
                       ? 'text-gray-700 hover:text-primary-600' 
                       : 'text-white hover:text-primary-600'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-                         {/* Technologies Dropdown */}
+                  }`}
+                >
+                  Services
+                  <ChevronDownIcon className="ml-1 h-4 w-4" />
+                </button>
+                
+                {/* Invisible bridge to prevent mouse leave */}
+                {isServicesOpen && (
+                  <div className="absolute top-full left-0 w-full h-6 bg-transparent"></div>
+                )}
+                
+                {/* Services Mega Menu */}
+                {isServicesOpen && (
+                  <div className="absolute top-full left-0 w-screen max-w-6xl bg-white/95 backdrop-blur-md shadow-xl border border-gray-200 rounded-lg p-6 mt-6"
+                    style={{ left: '50%', transform: 'translateX(-50%)' }}
+                  >
+                    <div className="grid grid-cols-6 gap-6">
+                      {/* Web Development */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">🌐</span>
+                          Web Development
+                        </h3>
+                        <div className="space-y-3">
+                          {services.webDevelopment.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Mobile Development */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">📱</span>
+                          Mobile Development
+                        </h3>
+                        <div className="space-y-3">
+                          {services.mobileDevelopment.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* AI & Machine Learning */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">🤖</span>
+                          AI & Machine Learning
+                        </h3>
+                        <div className="space-y-3">
+                          {services.aiMl.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Cloud & DevOps */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">☁️</span>
+                          Cloud & DevOps
+                        </h3>
+                        <div className="space-y-3">
+                          {services.cloudDevOps.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Consulting */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">💼</span>
+                          Consulting
+                        </h3>
+                        <div className="space-y-3">
+                          {services.consulting.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Maintenance & Support */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                          <span className="mr-2">🔧</span>
+                          Maintenance & Support
+                        </h3>
+                        <div className="space-y-3">
+                          {services.maintenance.map((service) => (
+                            <div key={service.name} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <span className="w-8 h-8 flex items-center justify-center text-primary-600">{service.icon}</span>
+                              <div>
+                                <div className="font-medium text-gray-900">{service.name}</div>
+                                <div className="text-sm text-gray-600">{service.description}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Bottom CTA */}
+                    <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+                      <p className="text-gray-600 mb-3">Need a custom solution?</p>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center bg-primary-600 text-white hover:bg-primary-700 font-semibold py-2 px-4 rounded-lg transition-colors"
+                      >
+                        Get Free Consultation
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+             
+                          {/* Technologies Dropdown */}
              <div 
                className="relative"
                onMouseEnter={() => setIsTechnologiesOpen(true)}
@@ -570,22 +878,47 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              
-                             {/* Mobile Technologies Section */}
+                             {navigation.map((item) => (
+                 <Link
+                   key={item.name}
+                   to={item.href}
+                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                     isActive(item.href)
+                       ? 'text-primary-600 bg-primary-50'
+                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                   }`}
+                   onClick={() => setIsOpen(false)}
+                 >
+                   {item.name}
+                 </Link>
+               ))}
+               
+                              {/* Mobile Services Section */}
+                <div className="border-t border-gray-200 pt-4 mt-4">
+                  <div className="px-3 py-2 text-sm font-semibold text-gray-900 mb-2">Services</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Object.entries(services).map(([category, serviceList]) => (
+                      <div key={category} className="space-y-1">
+                        <div className="px-3 py-1 text-xs font-medium text-gray-500 uppercase tracking-wide">
+                          {category === 'webDevelopment' && '🌐 Web Development'}
+                          {category === 'mobileDevelopment' && '📱 Mobile Development'}
+                          {category === 'aiMl' && '🤖 AI & Machine Learning'}
+                          {category === 'cloudDevOps' && '☁️ Cloud & DevOps'}
+                          {category === 'consulting' && '💼 Consulting'}
+                          {category === 'maintenance' && '🔧 Maintenance & Support'}
+                        </div>
+                        {serviceList.slice(0, 2).map((service) => (
+                          <div key={service.name} className="px-3 py-1 text-sm text-gray-700 flex items-center space-x-2">
+                            <span className="w-5 h-5 flex items-center justify-center text-primary-600">{service.icon}</span>
+                            <span>{service.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+               
+                              {/* Mobile Technologies Section */}
                <div className="border-t border-gray-200 pt-4 mt-4">
                  <div className="px-3 py-2 text-sm font-semibold text-gray-900 mb-2">Technologies</div>
                  <div className="grid grid-cols-2 gap-2">

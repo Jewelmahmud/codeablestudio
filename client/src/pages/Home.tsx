@@ -331,7 +331,7 @@ const Home = () => {
            </div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -382,23 +382,12 @@ const Home = () => {
                 </svg>
               </div>
               
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 relative z-10">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CodeBracketIcon className="h-12 w-12 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Ready to Transform?</h3>
-                  <p className="text-gray-200 mb-6">
-                    Let's discuss how we can help you achieve your digital goals.
-                  </p>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center bg-yellow-400 text-gray-900 hover:bg-yellow-300 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
-                  >
-                    Get Free Consultation
-                    <ArrowRightIcon className="h-5 w-5 ml-2" />
-                  </Link>
-                </div>
+              <div className="relative z-10">
+                <img 
+                  src="/images/hero_illustration.svg" 
+                  alt="Hero Illustration" 
+                  className="w-full h-auto max-w-lg mx-auto"
+                />
               </div>
             </motion.div>
           </div>
