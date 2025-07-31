@@ -37,6 +37,7 @@ import {
   ServerIcon,
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 interface CalculatorStep {
   id: number;
@@ -790,7 +791,7 @@ const APIDevelopment = () => {
           >
             Build robust, scalable, and secure APIs for your business. We specialize in REST, GraphQL, and custom integrations to power your digital ecosystem.
           </motion.p>
-                </div>
+        </div>
       </section>
 
       {/* Features Section */}
@@ -975,7 +976,30 @@ const APIDevelopment = () => {
               </div>
             </div>
           </div>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Build Your API?
+            </h2>
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+              Let's discuss your API requirements and create a custom solution that drives your business forward.
+            </p>
+            <Link
+              to="/contact"
+              className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 inline-block"
+            >
+              Start Your Project
+            </Link>
+          </motion.div>
         </div>
+      </section>
 
       {/* Services Overview */}
       <section className="bg-white py-16">
