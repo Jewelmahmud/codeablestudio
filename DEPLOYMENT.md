@@ -49,9 +49,9 @@ vercel
 4. Configure build settings:
    - Framework Preset: Create React App
    - Root Directory: `./` (root)
-   - Build Command: `cd client && npm install && npm run build`
+   - Build Command: `npm install && npm run build`
    - Output Directory: `client/build`
-   - Install Command: `cd client && npm install`
+   - Install Command: `npm install`
 
 ### 4. Environment Variables (if needed)
 If your app uses environment variables, add them in the Vercel dashboard:
