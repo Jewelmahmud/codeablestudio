@@ -27,6 +27,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTechnologiesOpen, setIsTechnologiesOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileTechnologiesOpen, setIsMobileTechnologiesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -537,7 +539,7 @@ const Navbar = () => {
                  isScrolled ? 'text-white' : 'text-primary-600'
                }`}>CS</span>
              </div>
-             <span className={`text-xl font-bold transition-colors duration-200 ${
+             <span className={`text-lg font-bold transition-colors duration-200 md:text-xl ${
                                isScrolled ? 'text-custom-dark' : 'text-white'
              }`}>Codable Studio</span>
            </Link>
@@ -985,7 +987,9 @@ const Navbar = () => {
           </div>
 
                      {/* Mobile Action Buttons */}
-           <div className="md:hidden flex items-center space-x-4">
+           <div className="md:hidden flex items-center space-x-3">
+             <LanguageSwitcher isScrolled={isScrolled} />
+             
              <button
                onClick={() => setIsOpen(!isOpen)}
                className={`transition-colors duration-200 focus:outline-none ${
@@ -1000,88 +1004,128 @@ const Navbar = () => {
                  <Bars3Icon className="h-6 w-6" />
                )}
              </button>
-             
-             <LanguageSwitcher isScrolled={isScrolled} />
-             
-             <Link
-               to="/login"
-               className="btn-primary text-sm"
-             >
-               {t('navigation.clientLogin')}
-             </Link>
            </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
-                             {navigation.map((item) => (
-                 <Link
-                   key={item.name}
-                   to={item.href}
-                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                     isActive(item.href)
-                       ? 'text-primary-600 bg-primary-50'
-                       : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                   }`}
-                   onClick={() => setIsOpen(false)}
-                 >
-                   {item.name}
-                 </Link>
-               ))}
-               
-                              {/* Mobile Services Section */}
-                <div className="border-t border-gray-200 pt-4 mt-4">
-                  <div className="px-3 py-2 text-sm font-semibold text-gray-900 mb-2">Services</div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {Object.entries(services).map(([category, serviceList]) => (
-                      <div key={category} className="space-y-1">
-                        <div className="px-3 py-1 text-xs font-medium text-gray-500 uppercase tracking-wide">
-                          {category === 'webDevelopment' && '🌐 Web Development'}
-                          {category === 'mobileDevelopment' && '📱 Mobile Development'}
-                          {category === 'aiMl' && '🤖 AI & Machine Learning'}
-                          {category === 'cloudDevOps' && '☁️ Cloud & DevOps'}
-                          {category === 'consulting' && '💼 Consulting'}
-                          {category === 'maintenance' && '🔧 Maintenance & Support'}
-                        </div>
-                        {serviceList.slice(0, 2).map((service) => (
-                          <div key={service.name} className="px-3 py-1 text-sm text-gray-700 flex items-center space-x-2">
-                            <span className="w-5 h-5 flex items-center justify-center text-primary-600">{service.icon}</span>
-                            <span>{service.name}</span>
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg max-h-[80vh] overflow-y-auto">
+              {/* Client Login Button */}
+              <div className="px-3 py-2 border-b border-gray-200 mb-2 sticky top-0 bg-white/95 backdrop-blur-md z-10">
+                <Link
+                  to="/login"
+                  className="btn-primary text-sm w-full text-center block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t('navigation.clientLogin')}
+                </Link>
+              </div>
+              
+              {/* Main Navigation Links */}
+              {navigation.map((item) => (
+                item.type === 'dropdown' ? (
+                  <div key={item.name} className="space-y-1">
+                    <button
+                      onClick={() => {
+                        if (item.dropdownType === 'services') {
+                          setIsMobileServicesOpen(!isMobileServicesOpen);
+                        } else if (item.dropdownType === 'technologies') {
+                          setIsMobileTechnologiesOpen(!isMobileTechnologiesOpen);
+                        }
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      {item.name}
+                      <ChevronDownIcon 
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          (item.dropdownType === 'services' && isMobileServicesOpen) || 
+                          (item.dropdownType === 'technologies' && isMobileTechnologiesOpen) 
+                            ? 'rotate-180' 
+                            : ''
+                        }`}
+                      />
+                    </button>
+                    
+                    {/* Services Dropdown */}
+                    {item.dropdownType === 'services' && isMobileServicesOpen && (
+                      <div className="pl-4 space-y-2 bg-gray-50 rounded-md p-2">
+                        {Object.entries(services).map(([category, serviceList]) => (
+                          <div key={category} className="space-y-1">
+                            <div className="px-2 py-1 text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                              {category === 'webDevelopment' && '🌐 Web Development'}
+                              {category === 'mobileDevelopment' && '📱 Mobile Development'}
+                              {category === 'aiMl' && '🤖 AI & Machine Learning'}
+                              {category === 'cloudDevOps' && '☁️ Cloud & DevOps'}
+                              {category === 'consulting' && '💼 Consulting'}
+                              {category === 'maintenance' && '🔧 Maintenance & Support'}
+                            </div>
+                            {serviceList.map((service) => (
+                              <Link
+                                key={service.name}
+                                to={service.href}
+                                className="block px-2 py-1 text-sm text-gray-700 hover:text-primary-600 flex items-center space-x-2"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                <span className="w-4 h-4 flex items-center justify-center text-primary-600">
+                                  {service.icon}
+                                </span>
+                                <span>{service.name}</span>
+                              </Link>
+                            ))}
                           </div>
                         ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
-               
-                              {/* Mobile Technologies Section */}
-               <div className="border-t border-gray-200 pt-4 mt-4">
-                 <div className="px-3 py-2 text-sm font-semibold text-gray-900 mb-2">Technologies</div>
-                 <div className="grid grid-cols-2 gap-2">
-                   {Object.entries(technologies).map(([category, techs]) => (
-                     <div key={category} className="space-y-1">
-                       <div className="px-3 py-1 text-xs font-medium text-gray-500 uppercase tracking-wide">
-                         {category === 'frontend' && '🎨 Frontend'}
-                         {category === 'backend' && '⚙️ Backend'}
-                         {category === 'mobile' && '📱 Mobile'}
-                         {category === 'desktop' && '🖥️ Desktop'}
-                         {category === 'database' && '🗄️ Database'}
-                         {category === 'cloud' && '☁️ Cloud & DevOps'}
-                         {category === 'ai' && '🤖 AI'}
-                         {category === 'crypto' && '₿ Crypto Development'}
-                       </div>
-                                               {techs.slice(0, 3).map((tech) => (
-                          <div key={tech.name} className="px-3 py-1 text-sm text-gray-700 flex items-center space-x-2">
-                            <span className="w-5 h-5 flex items-center justify-center">{tech.icon}</span>
-                            <span>{tech.name}</span>
+                    )}
+                    
+                    {/* Technologies Dropdown */}
+                    {item.dropdownType === 'technologies' && isMobileTechnologiesOpen && (
+                      <div className="pl-4 space-y-2 bg-gray-50 rounded-md p-2">
+                        {Object.entries(technologies).map(([category, techs]) => (
+                          <div key={category} className="space-y-1">
+                            <div className="px-2 py-1 text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                              {category === 'frontend' && '🎨 Frontend'}
+                              {category === 'backend' && '⚙️ Backend'}
+                              {category === 'mobile' && '📱 Mobile'}
+                              {category === 'desktop' && '🖥️ Desktop'}
+                              {category === 'database' && '🗄️ Database'}
+                              {category === 'cloud' && '☁️ Cloud & DevOps'}
+                              {category === 'ai' && '🤖 AI'}
+                              {category === 'crypto' && '₿ Crypto Development'}
+                            </div>
+                            {techs.map((tech) => (
+                              <Link
+                                key={tech.name}
+                                to={tech.href}
+                                className="block px-2 py-1 text-sm text-gray-700 hover:text-primary-600 flex items-center space-x-2"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                <span className="w-4 h-4 flex items-center justify-center">
+                                  {tech.icon}
+                                </span>
+                                <span>{tech.name}</span>
+                              </Link>
+                            ))}
                           </div>
                         ))}
-                     </div>
-                   ))}
-                 </div>
-               </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                      isActive(item.href)
+                        ? 'text-primary-600 bg-primary-50'
+                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              ))}
             </div>
           </div>
         )}
