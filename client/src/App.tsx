@@ -17,6 +17,7 @@ import Dashboard from './client/Dashboard';
 import ProjectDetail from './pages/ProjectDetail';
 import Invoices from './pages/Invoices';
 import Payment from './pages/Payment';
+import GetStarted from './pages/GetStarted';
 import WebApplicationDevelopment from './services/WebApplicationDevelopment';
 import EcommerceDevelopment from './services/EcommerceDevelopment';
 import ProgressiveWebApps from './services/ProgressiveWebApps';
@@ -34,12 +35,13 @@ function AppContent() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-                                  <Route path="/services" element={<Services />} />
-                        <Route path="/services/web-application-development" element={<WebApplicationDevelopment />} />
-                        <Route path="/services/ecommerce-development" element={<EcommerceDevelopment />} />
-                        <Route path="/services/progressive-web-apps" element={<ProgressiveWebApps />} />
-                        <Route path="/services/api-development" element={<APIDevelopment />} />
-                        <Route path="/projects" element={<Projects />} />
+          <Route path="/get-started" element={<GetStarted />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/web-application-development" element={<WebApplicationDevelopment />} />
+          <Route path="/services/ecommerce-development" element={<EcommerceDevelopment />} />
+          <Route path="/services/progressive-web-apps" element={<ProgressiveWebApps />} />
+          <Route path="/services/api-development" element={<APIDevelopment />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:id" element={<JobDetails />} />
